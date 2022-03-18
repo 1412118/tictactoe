@@ -42,6 +42,7 @@
 }
 
 .board .square {
+  vertical-align: top;
   width: 45px;
   height: 45px;
   background-color: white;
