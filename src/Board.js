@@ -4,27 +4,36 @@ import {useState} from 'react';
 
 function Board(){
     let [status, setStatus] = useState('X');
+    //let status = 'X';
 
-    let [state, setState] = useState(Array(9));
+    let [states, setStates] = useState(Array(9));
 
-    function handleOnClick(value){
-        state[value] = 'X';
-        status = 'O';
-        //setState(state);
-        setStatus(status);
+   //let states = Array(9);
+
+    function handleOnClick(i){
+        if(status === 'X'){
+            states[i] = 'X';
+            setStatus('O');
+        }
+        else{
+            states[i] = 'O';
+            setStatus('X'); 
+        }
+        console.log(states);
     }
 
-    function renderSquare(value){
+    function renderSquare(i){
         return(
             <Square 
-                value={state[value]}
-                onClick={() => handleOnClick(value)}
+                value={states[i]}
+                onClick={() => handleOnClick(i)}
             />
         )
     }
 
     return(
         <Fragment>
+            {console.log(1)}
         <div className="board">
             <h3 className="status">Next Player: {status}</h3>
             <div className="board-row">

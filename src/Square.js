@@ -3,15 +3,10 @@ import ReactDOM from 'react-dom';
 import {useState} from 'react';
 import Board from './Board';
 
-function Square({value, onClick}){
-    // let [state, setState] = useState('');
-
-    // const handleOnClick = () => {
-    //     setState(value)
-    // }
-    console.log(onClick)
+function Square(props){
+    console.log(props)
     return(
-        <button className="square" onClick={onClick}>{value}</button>
+        <button className="square" onClick={props.onClick}>{props.value}</button>
     )
 }
 
