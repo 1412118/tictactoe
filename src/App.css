@@ -55,6 +55,10 @@
   background-color: white;
 }
 
-.board .status{
+.status{
   margin: 10px 0;
+}
+
+.game{
+  display: flex;
 }
