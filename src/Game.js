@@ -4,7 +4,8 @@ import React, {Fragment, useState} from 'react';
 function Game(){
     let [state, setState] = useState({
         history: [{
-            squares: Array(9).fill('')
+            squares: Array(9).fill(''),
+            historyStatus: null
         }],
         //squares: Array(9).fill(''),
         xIsNext: true
@@ -16,9 +17,12 @@ function Game(){
             return;
         }
         const squares = stateHistory[stateHistory.length - 1].squares.slice();
+        if(squares[i] !== ''){
+            return;
+        }
         squares[i] = state.xIsNext ? 'X' : 'O';
-        
-        state.history.push({squares});
+        const xIsNextHistory = state.xIsNext;
+        state.history.push({squares, xIsNextHistory});
         const history = state.history;
         setState({
             history,
@@ -48,6 +52,7 @@ function Game(){
     }
 
     function changeStatus(){
+        console.log(state)
         const history = state.history[state.history.length - 1];
         const winner = calculateWinner(history.squares);
         if(winner){
@@ -56,6 +61,14 @@ function Game(){
         else{
             return 'Next Player: ' + (state.xIsNext ? 'X' : 'O');
         }
+    }
+
+    function reRenderPastMove(index){
+        const history = state.history.slice(0, index + 1);
+        setState({
+            history,
+            xIsNext: history[index].historyStatus
+        })
     }
 
     return (
@@ -71,7 +84,7 @@ function Game(){
                 {
                     state.history.map((e, index) => {
                         const desc = index ? "Go to step " + index : "Go to start game"
-                        return <li>{desc}</li>
+                        return <li key={index} onClick={() => reRenderPastMove(index)}>{desc}</li>
                     })
                 }
             </ul>
