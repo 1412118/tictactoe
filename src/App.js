@@ -6,20 +6,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          <h1 className="title">TIC TAC TOE</h1>
         <div className="game">
+        
           <Game />
         </div>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

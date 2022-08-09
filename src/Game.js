@@ -2,10 +2,26 @@ import Board from "./Board";
 import React, {Fragment, useState} from 'react';
 
 function Game(){
+
+    const hideBottomBorder = {
+        borderBottom: "1px solid black"
+    }
+
+    const statusDisplayFlex = {
+        display: "flex",
+        justifyContent: "center"
+    }
+
+    const statusDisplayBlock = {
+        display: "block"
+    }
+
+    let winner_status = '';
+
     let [state, setState] = useState({
         history: [{
             squares: Array(9).fill(''),
-            historyStatus: null
+            historyStatus: true
         }],
         //squares: Array(9).fill(''),
         xIsNext: true
@@ -21,14 +37,15 @@ function Game(){
             return;
         }
         squares[i] = state.xIsNext ? 'X' : 'O';
-        const xIsNextHistory = state.xIsNext;
-        state.history.push({squares, xIsNextHistory});
+        let historyStatus = !state.xIsNext;
+        state.history.push({squares, historyStatus});
         const history = state.history;
         setState({
             history,
             //squares,
             xIsNext: !state.xIsNext
         })
+        console.log(state.history);
     }
 
     function calculateWinner(squares){
@@ -48,46 +65,98 @@ function Game(){
                 return squares[a]
             }
         }
-        return null;
+        return '';
     }
 
     function changeStatus(){
-        console.log(state)
+        debugger;
         const history = state.history[state.history.length - 1];
         const winner = calculateWinner(history.squares);
-        if(winner){
-            return 'Winner: ' + winner;
+        winner_status = winner;
+        if(winner === 'X'){
+            return (
+                <Fragment>
+                    <div style={statusDisplayBlock}>
+                        <div className="win win-x">{winner}</div>
+                        <div className='win'>WIN!</div>
+                        <button onClick={() => reRenderPastMove(0)}>Restart game</button>
+                    </div>
+                </Fragment>
+            )
+        }
+        else if(winner === 'O'){
+            return (
+                <Fragment>
+                    <div style={statusDisplayBlock}>
+                        <div className="win win-o">{winner}</div>
+                        <div className='win'>WIN!</div>
+                        <button onClick={() => reRenderPastMove(0)}>Restart game</button>
+                    </div>
+                </Fragment>
+                )
         }
         else{
-            return 'Next Player: ' + (state.xIsNext ? 'X' : 'O');
+            //return 'Next Player: ' + (state.xIsNext ? 'X' : 'O');
+             if(state.xIsNext === true) {
+                return <Fragment>
+                        <div className="stt stt-x">X</div>
+                        <div className="stt stt-o" style={hideBottomBorder}>O</div>
+                    </Fragment> 
+            }
+            else {
+                return <Fragment>
+                            <div className="stt stt-x" style={hideBottomBorder}>X</div>
+                            <div className="stt stt-o">O</div>
+                        </Fragment>
+            }
         }
     }
 
     function reRenderPastMove(index){
         const history = state.history.slice(0, index + 1);
+        console.log(history);
         setState({
             history,
             xIsNext: history[index].historyStatus
         })
     }
 
+    function renderBoard(){
+        if(winner_status === ''){
+            return <Board 
+                squares={state.history[state.history.length - 1].squares}
+                onClick={(i) => handleOnClick(i)}
+            />
+        }
+        else{
+            return(
+                <Fragment>
+                </Fragment>
+                )
+        }
+    }
+
     return (
         <Fragment>
-            <div>
+            <div className="status-board">
                 <div className="status">{changeStatus()}</div>
-                <Board 
+                {/* <Board 
                     squares={state.history[state.history.length - 1].squares}
                     onClick={(i) => handleOnClick(i)}
-                />
+                /> */}
+                { renderBoard() }
             </div>
-            <ul>
-                {
-                    state.history.map((e, index) => {
-                        const desc = index ? "Go to step " + index : "Go to start game"
-                        return <li key={index} onClick={() => reRenderPastMove(index)}>{desc}</li>
-                    })
-                }
-            </ul>
+            <div className="his-steps">
+                <div className="his-steps-title">History Steps</div>
+                <ul>
+                    {
+                        state.history.map((e, index) => {
+                            const desc = index ? "Go to step " + index : "Go to start game"
+                            return <li key={index} onClick={() => reRenderPastMove(index)}>{desc}</li>
+                        })
+                    }
+                </ul>
+            </div>
         </Fragment>
     )
 }
