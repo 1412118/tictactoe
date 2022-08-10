@@ -27,20 +27,8 @@
   background-color: #fff;
   min-height: 100vh;
   display: block;
-  /*flex-direction: row;
-  align-items: center;
-  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: #000;
-  /* text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #b026ff,
-    0 0 82px #b026ff,
-    0 0 92px #b026ff,
-    0 0 102px #b026ff,
-    0 0 151px #b026ff; */
   position: relative;
 }
 
@@ -59,19 +47,16 @@
 
 .title{
   margin-top: 0;
+  font-family: "Flamenco-R";
 }
 
 .status-board {
-  border: 1px solid #9c9c9c;
+  border-bottom: 1px solid #9c9c9c;
   border-radius: 3px;
   width: 100%;
   height: 100%;
-  margin: 10px 10px;
-  /* width: 370px;
-  height: 50%;
-  position: absolute;
-  left: 10%;
-  top: 25%;*/
+  margin:  0;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,15 +65,9 @@
 }
 
 .his-steps{
-  /*border: 1px solid #9c9c9c;*/
   width:  50%;
   height: 100%;
   margin: 10px 10px;
-  /* width: 370px;
-  height: 50%;
-  position: absolute;
-  right: 10%;
-  top: 25%;*/
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -101,12 +80,11 @@
 .his-steps ul li{
   list-style: none;
   padding: 10px;
-  /*box-shadow: 0 5px 25px rgba(0,0,0,.1);*/
   border-bottom: 1px solid #ccc;
 }
 
 .his-steps ul li:hover{
-  transform: scale(1.1);
+  transform: scale(1.02);
   z-index: 100;
   background-color: #ccc;
   color: #fff;
@@ -147,8 +125,6 @@
 
 .status .stt{
   width: 35%;
-  /* border: 0.2rem solid #fff;
-  border-radius: 1rem;*/
   margin: 5% 5%;
   font-size: 3em;
   font-family: "Flamenco-R";
@@ -158,6 +134,21 @@
   border-bottom: 5px solid green;
 }
 
+.status .restart-game{
+  border:1px solid #9c9c9c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #059862;
+}
+
+.status .restart-game:hover{
+  background-color: #059862;
+  color: #fff;
+  cursor: pointer;
+}
 
 .status .stt-x{
     color: #ff5643;
@@ -196,12 +187,6 @@
   position: relative;
   border: 0.2rem solid #000;
   border-radius: 1rem;
-  /* box-shadow: 0 0 .2rem #fff,
-            0 0 .2rem #fff,
-            0 0 2rem #bc13fe,
-            0 0 0.8rem #bc13fe,
-            0 0 0.5rem #bc13fe,
-            inset 0 0 0.8rem #bc13fe;  */
 }
 
 .board .lines{
@@ -216,12 +201,6 @@
   stroke-dashoffset: 400;
   stroke-dasharray: 400;
   animation: animate 0.5s linear forwards;
-  /* --colorA: #bc13fe;
-  filter: drop-shadow(0 0 2px var(--colorA)) 
-        drop-shadow(0 0 0px var(--colorA)) 
-        drop-shadow(0 0 0px var(--colorA)) 
-        drop-shadow(0 0 0px var(--colorA)) 
-        drop-shadow(0 0 0px var(--colorA)); */
 }
 
 @keyframes animate {
@@ -247,8 +226,6 @@ table{
   width: 5.5em;
   height: 5.5em;
   color: black;
-  /* background-color: #b026ff;
-  opacity: .2; */
   padding: 0.5rem;
 }
 
@@ -273,6 +250,10 @@ table{
     width: 4.25em;
     height: 4.25em;
     color: black;
+  }
+
+  .status-board {
+    border-right: 1px solid #9c9c9c;
   }
 
   .App{

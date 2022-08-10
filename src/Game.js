@@ -7,11 +7,6 @@ function Game(){
         borderBottom: "1px solid black"
     }
 
-    const statusDisplayFlex = {
-        display: "flex",
-        justifyContent: "center"
-    }
-
     const statusDisplayBlock = {
         display: "block"
     }
@@ -69,7 +64,6 @@ function Game(){
     }
 
     function changeStatus(){
-        debugger;
         const history = state.history[state.history.length - 1];
         const winner = calculateWinner(history.squares);
         winner_status = winner;
@@ -79,7 +73,7 @@ function Game(){
                     <div style={statusDisplayBlock}>
                         <div className="win win-x">{winner}</div>
                         <div className='win'>WIN!</div>
-                        <button onClick={() => reRenderPastMove(0)}>Restart game</button>
+                        <button className="restart-game" onClick={() => reRenderPastMove(0)}>Restart game</button>
                     </div>
                 </Fragment>
             )
@@ -90,7 +84,7 @@ function Game(){
                     <div style={statusDisplayBlock}>
                         <div className="win win-o">{winner}</div>
                         <div className='win'>WIN!</div>
-                        <button onClick={() => reRenderPastMove(0)}>Restart game</button>
+                        <button className="restart-game" onClick={() => reRenderPastMove(0)}>Restart game</button>
                     </div>
                 </Fragment>
                 )
