@@ -33,10 +33,8 @@ function Game(){
         }
         squares[i] = state.xIsNext ? 'X' : 'O';
         let historyStatus = !state.xIsNext;
-        state.history.push({squares, historyStatus});
-        const history = state.history;
         setState({
-            history,
+            history: stateHistory.concat([{squares, historyStatus}]),
             //squares,
             xIsNext: !state.xIsNext
         })
