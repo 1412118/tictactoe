@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-function Square(props){
+function SquareTablet(props){
     // const hideSVG = {
     //     visibility: "hidden"
     // };
@@ -9,15 +9,15 @@ function Square(props){
     // const showSVG = {
     //     visibility: "visible"
     // }
-console.log("Square");
+
     function getValue(){
-        //console.log('value: ' + props.value);
+        console.log('value: ' + props.value);
         if(props.value === 'X'){
             return <Fragment>
                 <svg className="player-x lines">
                     <g fill="none" stroke="#ff5643" strokeWidth="6">
-                        <path className="path1" strokeLinecap="butt" d="M120,120L20,20"/>
-                        <path className="path2" strokeLinecap="butt" d="M20,120L120,20" />
+                        <path className="path1" strokeLinecap="butt" d="M100,100L20,20"/>
+                        <path className="path2" strokeLinecap="butt" d="M20,100L100,20" />
                     </g>
                 </svg>
             </Fragment>
@@ -26,7 +26,7 @@ console.log("Square");
             return <Fragment>
                 <svg className="player-o lines">
                     <g fill="none" stroke="#3ab1f3" strokeWidth="6">
-                        <path className="path1" strokeLinecap="butt" d="M82,18A35,35 0 1,0 58,120A35,35 0 1,0 82,18"/>
+                        <path className="path1" strokeLinecap="butt" d="M58,16A35,35 0 1,0 58,100A35,35 0 1,0 58,16"/>
                     </g>
                 </svg>
             </Fragment>
@@ -51,4 +51,4 @@ console.log("Square");
     )
 }
 
-export default Square;
+export default SquareTablet;
