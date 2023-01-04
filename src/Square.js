@@ -16,8 +16,8 @@ console.log("Square");
             return <Fragment>
                 <svg className="player-x lines">
                     <g fill="none" stroke="#ff5643" strokeWidth="6">
-                        <path className="path1" strokeLinecap="butt" d="M120,120L20,20"/>
-                        <path className="path2" strokeLinecap="butt" d="M20,120L120,20" />
+                        <path className="path path9"/>
+                        <path className="path path10"/>
                     </g>
                 </svg>
             </Fragment>
@@ -26,7 +26,7 @@ console.log("Square");
             return <Fragment>
                 <svg className="player-o lines">
                     <g fill="none" stroke="#3ab1f3" strokeWidth="6">
-                        <path className="path1" strokeLinecap="butt" d="M82,18A35,35 0 1,0 58,120A35,35 0 1,0 82,18"/>
+                        <path className="path path11"/>
                     </g>
                 </svg>
             </Fragment>

@@ -229,6 +229,53 @@ table{
   padding: 0.5rem;
 }
 
+.board .lines .path{
+  stroke-linecap: butt;
+}
+
+.board .lines .path1{
+  d: path("M213,139L0,139")
+}
+
+.board .lines .path2{
+  d: path("M213,139L425,139")
+}
+
+.board .lines .path3{
+  d: path("M213,278L0,278")
+}
+
+.board .lines .path4{
+  d: path("M213,278L425,278")
+}
+
+.board .lines .path5{
+  d: path("M139,213L139,0")
+}
+
+.board .lines .path6{
+  d: path("M278,213L278,0")
+}
+
+.board .lines .path7{
+  d: path("M139,213L139,425")
+}
+
+.board .lines .path8{
+  d: path("M278,213L278,425")
+}
+
+.board .lines .path9{
+  d: path("M120,120L20,20")
+}
+
+.board .lines .path10{
+  d: path("M20,120L120,20")
+}
+
+.board .lines .path11{
+  d: path("M82,18A35,35 0 1,0 58,120A35,35 0 1,0 82,18")
+}
 
 /* .board .squ .player-x{
   visibility: visible;
@@ -259,6 +306,50 @@ table{
   .App{
     background-size: 100% 100%;
   }
+
+  .board .lines .path1{
+    d: path("M174,114L0,114")
+  }
+  
+  .board .lines .path2{
+    d: path("M174,114L348,114")
+  }
+  
+  .board .lines .path3{
+    d: path("M174,229L0,229")
+  }
+  
+  .board .lines .path4{
+    d: path("M174,229L348,229")
+  }
+  
+  .board .lines .path5{
+    d: path("M114,174L114,0")
+  }
+  
+  .board .lines .path6{
+    d: path("M229,174L229,0")
+  }
+  
+  .board .lines .path7{
+    d: path("M114,174L114,348")
+  }
+  
+  .board .lines .path8{
+    d: path("M229,174L229,348")
+  }
+  
+  .board .lines .path9{
+    d: path("M100,100L20,20")
+  }
+  
+  .board .lines .path10{
+    d: path("M20,100L100,20")
+  }
+  
+  .board .lines .path11{
+    d: path("M58,16A35,35 0 1,0 58,100A35,35 0 1,0 58,16")
+  }
 }
 
 @media screen and (max-width: 640px){
@@ -281,5 +372,49 @@ table{
 
   .App{
     background-size: 100% 100%;
+  }
+
+  .board .lines .path1{
+    d: path("M140,92L0,92")
+  }
+  
+  .board .lines .path2{
+    d: path("M140,92L273,92")
+  }
+  
+  .board .lines .path3{
+    d: path("M140,186L0,186")
+  }
+  
+  .board .lines .path4{
+    d: path("M140,186L275,186")
+  }
+  
+  .board .lines .path5{
+    d: path("M92,140L92,0")
+  }
+  
+  .board .lines .path6{
+    d: path("M186,140L186,0")
+  }
+  
+  .board .lines .path7{
+    d: path("M92,140L92,273")
+  }
+  
+  .board .lines .path8{
+    d: path("M186,140L186,273")
+  }
+  
+  .board .lines .path9{
+    d: path("M80,80L13,13")
+  }
+  
+  .board .lines .path10{
+    d: path("M13,80L80,13")
+  }
+  
+  .board .lines .path11{
+    d: path("M48,12A30,30 0 1,0 48,82A30,30 0 1,0 48,12")
   }
 }

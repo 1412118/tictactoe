@@ -15,44 +15,28 @@ console.log("Board");
           <g fill="none" stroke="#000" strokeWidth="2">
             <g fill="none" stroke="#000" strokeWidth="2">
               <path
-                className="path1"
-                strokeLinecap="butt"
-                d="M213,139L0,139"
+                className="path path1"
               ></path>
               <path
-                className="path2"
-                strokeLinecap="butt"
-                d="M213,139L425,139"
+                className="path path2"
               ></path>
               <path
-                className="path3"
-                strokeLinecap="butt"
-                d="M213,278L0,278"
+                className="path path3"
               ></path>
               <path
-                className="path4"
-                strokeLinecap="butt"
-                d="M213,278L425,278"
+                className="path path4"
               ></path>
               <path
-                className="path5"
-                strokeLinecap="butt"
-                d="M139,213L139,0"
+                className="path path5"
               ></path>
               <path
-                className="path6"
-                strokeLinecap="butt"
-                d="M278,213L278,0"
+                className="path path6"
               ></path>
               <path
-                className="path7"
-                strokeLinecap="butt"
-                d="M139,213L139,425"
+                className="path path7"
               ></path>
               <path
-                className="path8"
-                strokeLinecap="butt"
-                d="M278,213L278,425"
+                className="path path8"
               ></path>
             </g>
           </g>

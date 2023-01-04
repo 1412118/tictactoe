@@ -1,7 +1,5 @@
 import Board from "./Board";
 import React, { Fragment, useEffect, useState } from "react";
-import BoardMobile from "./Mobile/BoardMobile";
-import BoardTablet from "./Tablet/BoardTablet";
 
 function Game() {
 console.log("Game");
@@ -22,7 +20,6 @@ console.log("Game");
         historyStatus: true,
       },
     ],
-    //squares: Array(9).fill(''),
     xIsNext: true,
   });
 
@@ -39,10 +36,8 @@ console.log("Game");
     let historyStatus = !state.xIsNext;
     setState({
       history: stateHistory.concat([{ squares, historyStatus }]),
-      //squares,
       xIsNext: !state.xIsNext,
     });
-    //console.log(state.history);
   }
 
   function calculateWinner(squares) {
@@ -69,11 +64,12 @@ console.log("Game");
     const history = state.history[state.history.length - 1];
     const winner = calculateWinner(history.squares);
     winner_status = winner;
-    if (winner === "X") {
+    if (winner !== "") {
+        let classStr = "win win-" + winner.toLowerCase();
       return (
         <Fragment>
           <div style={statusDisplayBlock}>
-            <div className="win win-x">{winner}</div>
+            <div className={classStr}>{winner}</div>
             <div className="win">WIN!</div>
             <button
               className="restart-game"
@@ -84,23 +80,7 @@ console.log("Game");
           </div>
         </Fragment>
       );
-    } else if (winner === "O") {
-      return (
-        <Fragment>
-          <div style={statusDisplayBlock}>
-            <div className="win win-o">{winner}</div>
-            <div className="win">WIN!</div>
-            <button
-              className="restart-game"
-              onClick={() => reRenderPastMove(0)}
-            >
-              Restart game
-            </button>
-          </div>
-        </Fragment>
-      );
-    } else {
-      //return 'Next Player: ' + (state.xIsNext ? 'X' : 'O');
+    }  else {
       if (state.xIsNext === true) {
         return (
           <Fragment>
@@ -125,39 +105,22 @@ console.log("Game");
 
   function reRenderPastMove(index) {
     const history = state.history.slice(0, index + 1);
-    //console.log(history);
     setState({
       history,
       xIsNext: history[index].historyStatus,
     });
   }
-
+  
   function renderBoard() {
     if (winner_status === "") {
-      if (windowSize.innerWidth >= 1007) {
         return (
           <Board
             squares={state.history[state.history.length - 1].squares}
             onClick={(i) => handleOnClick(i)}
           />
         );
-      } else if (windowSize.innerWidth < 1007 && windowSize.innerWidth >= 640) {
-        return (
-          <BoardTablet
-            squares={state.history[state.history.length - 1].squares}
-            onClick={(i) => handleOnClick(i)}
-          />
-        );
-      }
-      else if(windowSize.innerWidth < 640){
-        return (
-            <BoardMobile
-              squares={state.history[state.history.length - 1].squares}
-              onClick={(i) => handleOnClick(i)}
-            />
-          );
-      }
-    } else {
+    } 
+    else {
       return <Fragment></Fragment>;
     }
   }
@@ -170,23 +133,11 @@ console.log("Game");
   const resizeWindow = () => {
     setWindowSize(getWindowSize);
   };
-
-  useEffect(() => {
-    resizeWindow();
-    window.addEventListener("resize", resizeWindow);
-
-    return () => {
-      window.removeEventListener("resize", resizeWindow);
-    };
-  }, []);
+  
   return (
     <Fragment>
       <div className="status-board">
         <div className="status">{changeStatus()}</div>
-        {/* <Board 
-                    squares={state.history[state.history.length - 1].squares}
-                    onClick={(i) => handleOnClick(i)}
-                /> */}
         {renderBoard()}
       </div>
       <div className="his-steps">
